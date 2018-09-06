@@ -153,7 +153,6 @@ def run_test_draw_row_of_circles():
     # ------------------------------------------------------------------
     title = 'Test 3 of DRAW_ROW_OF_CIRCLES:  Row of 12 RED circles!'
     window2 = rg.RoseWindow(600, 150, title)
-
     # Test 3:
     center = rg.Point(50, 50)
     draw_row_of_circles(12, center, 'red', window2)
