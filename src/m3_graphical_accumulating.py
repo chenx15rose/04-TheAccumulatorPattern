@@ -95,6 +95,11 @@ def draw_parallel_lines(n, point, length, window):
       :type length: int
       :type window: rg.RoseWindow
     """
+    X=point.x
+    Y=point.y
+    for k in range(n):
+        point = rg.Point(X,Y)
+
     # ------------------------------------------------------------------
     # TODO: 2. Implement and test this function.
     #          Tests have been written for you (above).
