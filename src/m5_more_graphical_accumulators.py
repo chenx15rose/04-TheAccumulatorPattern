@@ -259,7 +259,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
 
     window.render()
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -350,8 +350,39 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type n: int
       :type window: rg.RoseWindow
       """
+
+    R1_color = rectangle1.outline_color
+    R2_color = rectangle2.outline_color
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+
+    point11 = rectangle1.corner_1
+    point12 = rectangle1.corner_2
+    point21 = rectangle2.corner_1
+    point22 = rectangle2.corner_2
+
+    center1 = rg.Point(1/2*(point11.x + point12.x),1/2*(point11.y + point12.y))
+    center2 = rg.Point(1/2*(point21.x + point22.x),1/2*(point21.y + point22.y))
+
+    for k in range (n):
+        line = rg.Line(center1, center2)
+        line.thickness = 5
+        if k%2==0:
+            line.color = R1_color
+        else:
+            line.color = R2_color
+        line.attach_to(window)
+        center1.x -= 1 / 2 * math.fabs(point11.x - point12.x)
+        center1.y += 1 / 2 * math.fabs(point11.y - point12.y)
+        center2.x -= 1 / 2 * math.fabs(point11.x - point12.x)
+        center2.y += 1 / 2 * math.fabs(point11.y - point12.y)
+
+    window.render()
+
+
+
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
